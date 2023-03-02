@@ -1,0 +1,28 @@
+{
+  "veiculos" : {
+    "capCilindro" : "55",
+    "desMotor" : "552",
+    "carga" : "222",
+    "peso" : "789",
+    "precoTabela" : "85589",
+    "placa" : "BRA7E59",
+    "quilometragem" : "55588"
+  },
+  "seguro" : {
+    "nome" : "Ana",
+    "sobrenome" : "Paula",
+    "data" : "12/09/1999",
+    "endereco" : "QNM 52 J 12",
+    "CEP" : "75896413",
+    "cidade" : "Santa Catarina",
+    "link" : "https://www.google.com/"
+  },
+  "cotacao" : {
+    "email" : "anapaula@gmail.com",
+    "telefone" : "15963875",
+    "nomeUser" : "aninha",
+    "senha" : "123456As",
+    "confSenha" : "123456As",
+    "comentario" : "Catarina"
+  }
+}
