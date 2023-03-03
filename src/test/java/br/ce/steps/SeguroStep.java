@@ -1,6 +1,5 @@
 package br.ce.steps;
 
-import br.ce.pages.ProdutoPage;
 import br.ce.pages.SeguroPage;
 import br.ce.pages.VeiculosPage;
 import io.cucumber.java.pt.E;

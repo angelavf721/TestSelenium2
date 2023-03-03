@@ -1,24 +1,27 @@
 package br.ce.steps;
 
 import br.ce.pages.VeiculosPage;
-import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.WebDriver;
 
-import static br.ce.driverFactory.Hooks.*;
+
+import static br.ce.steps.Hooks.*;
 
 public class VeiculosStep {
     private JSONObject veiculosJsonData;
     VeiculosPage veiculosPage;
 
+    public WebDriver driver;
+
 
     @Dado("que estou na aplicação")
     public void que_estou_na_aplicação() {
-        iniciarDriver();
-        getDriver().get("http://sampleapp.tricentis.com/101/app.php");
+        abrirUrl("http://sampleapp.tricentis.com/101/app.php");
+        driver = getDriver();
     }
 
     @Quando("seleciono a marca do veiculo")
@@ -60,7 +63,7 @@ public class VeiculosStep {
     @E("seleciono o numero de assentos")
     public void selecionoONumeroDeAssentos() {
         veiculosPage = new VeiculosPage();
-        veiculosPage.numeroAssentos();
+        veiculosPage.setNumeroAss();
     }
 
     @E("seleciono a direção do volante")
@@ -85,7 +88,7 @@ public class VeiculosStep {
         veiculosPage = new VeiculosPage();
         veiculosJsonData = null;
         veiculosJsonData = veiculosPage.getJsonDataObject("data", "veiculos");
-        veiculosPage.carga((String)veiculosJsonData.get("carga"));
+        veiculosPage.setCarga((String)veiculosJsonData.get("carga"));
     }
 
     @E("informo o peso total")
@@ -93,7 +96,7 @@ public class VeiculosStep {
         veiculosPage = new VeiculosPage();
         veiculosJsonData = null;
         veiculosJsonData = veiculosPage.getJsonDataObject("data", "veiculos");
-        veiculosPage.pesoTotal((String)veiculosJsonData.get("peso"));
+        veiculosPage.setPeso((String)veiculosJsonData.get("peso"));
     }
 
     @E("informo o preço de tabela")
@@ -109,7 +112,7 @@ public class VeiculosStep {
         veiculosPage = new VeiculosPage();
         veiculosJsonData = null;
         veiculosJsonData = veiculosPage.getJsonDataObject("data", "veiculos");
-        veiculosPage.numeroPlaca((String)veiculosJsonData.get("placa"));
+        veiculosPage.setPlaca((String)veiculosJsonData.get("placa"));
     }
 
     @E("informo a quilometragem anual")
@@ -126,10 +129,4 @@ public class VeiculosStep {
         veiculosPage.buttonNext();
     }
 
-
-
-//    @After
-//    public void End(){
-//        fecharDriver();
-//    }
 }

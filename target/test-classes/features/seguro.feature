@@ -1,5 +1,5 @@
 #language: pt
-@seguro
+
   Funcionalidade: Cadastro do usuário
     Como usuário
     Eu quero fazer o seguro
@@ -22,5 +22,5 @@
       E seleciono a ocupação
       E seleciono os hobbies
       E informo a URL
-#      E insiro a foto
+      E insiro a foto
       Então vou para proxima pagina

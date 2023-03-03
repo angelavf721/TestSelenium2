@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static br.ce.driverFactory.Hooks.getDriver;
+import static br.ce.steps.Hooks.getDriver;
 
 public class Utils {
 

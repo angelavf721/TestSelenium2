@@ -1,21 +1,25 @@
-package br.ce.driverFactory;
-
-
+package br.ce.steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.apache.commons.io.FileUtils;
+import org.junit.Rule;
+import org.junit.rules.TestName;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.time.Duration;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
-
     public static WebDriver driver;
-
-
+    @Rule
+    public TestName testName = new TestName();
+    @Before
     public static void iniciarDriver() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Angel\\Documents\\driver\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
@@ -23,8 +27,8 @@ public class Hooks {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-
-    public static void fecharDriver() {
+    @After
+    public void fecharDriver() {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.quit();
     }
@@ -36,4 +40,5 @@ public class Hooks {
     public static void abrirUrl(String url) {
         driver.get(url);
     }
+
 }

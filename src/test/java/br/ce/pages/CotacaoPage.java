@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-import static br.ce.driverFactory.Hooks.getDriver;
+import static br.ce.steps.Hooks.getDriver;
 
 public class CotacaoPage extends Utils{
 

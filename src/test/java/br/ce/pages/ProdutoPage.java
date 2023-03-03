@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import static br.ce.driverFactory.Hooks.getDriver;
+import static br.ce.steps.Hooks.getDriver;
 
 public class ProdutoPage extends Utils {
     public ProdutoPage() {

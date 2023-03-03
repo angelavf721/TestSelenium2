@@ -5,7 +5,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import static br.ce.driverFactory.Hooks.getDriver;
+import java.io.File;
+
+import static br.ce.steps.Hooks.getDriver;
 
 public class SeguroPage extends Utils{
 
@@ -84,7 +86,7 @@ public class SeguroPage extends Utils{
         escrever(url,text);
     }
     public void setFoto(){
-        escrever(foto,"C:\\Users\\Angel\\Pictures\\Image.jpeg");
+        foto.sendKeys(new File("C:\\Users\\Angel\\Pictures\\Image.jpeg").getAbsolutePath());
     }
 
     public void buttonNext(){

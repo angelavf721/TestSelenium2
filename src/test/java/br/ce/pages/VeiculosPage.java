@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import static br.ce.driverFactory.Hooks.getDriver;
+import static br.ce.steps.Hooks.getDriver;
 
 public class VeiculosPage extends Utils{
 
@@ -46,7 +46,7 @@ public class VeiculosPage extends Utils{
     private WebElement combustivel;
 
     @FindBy(how = How.ID, using = "payload")
-    private WebElement kg;
+    private WebElement carga;
 
     @FindBy(how = How.ID, using = "totalweight")
     private WebElement peso;
@@ -93,22 +93,22 @@ public class VeiculosPage extends Utils{
     public void setVolante(){
         clicar(volante);
     }
-    public void numeroAssentos(){
+    public void setNumeroAss(){
         select(numberAss,"4");
     }
     public void setCombustivel(){
         select(combustivel,"Diesel");
     }
-    public void carga(String text){
-        escrever(kg, text);
+    public void setCarga(String text){
+        escrever(carga, text);
     }
-    public void pesoTotal(String text){
+    public void setPeso(String text){
         escrever(peso, text);
     }
     public void setPreco(String text){
         escrever(preco, text);
     }
-    public void numeroPlaca(String text){
+    public void setPlaca(String text){
         escrever(placa, text);
     }
     public void setQuilometragem(String text){
@@ -128,14 +128,14 @@ public class VeiculosPage extends Utils{
         despenhoMotor("552");
         setData();
         setDataDia();
-        numeroAssentos();
+        setNumeroAss();
         setVolante();
         setNumberofseat();
         setCombustivel();
-        carga("222");
-        pesoTotal("789");
+        setCarga("222");
+        setPeso("789");
         setPreco("85589");
-        numeroPlaca("BRA7E59");
+        setPlaca("BRA7E59");
         setQuilometragem("55588");
         buttonNext();
     }
