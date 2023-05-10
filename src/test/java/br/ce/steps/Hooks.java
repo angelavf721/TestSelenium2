@@ -1,12 +1,15 @@
 package br.ce.steps;
 
+import br.ce.pages.Utils;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,11 +22,13 @@ public class Hooks {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Angel\\Documents\\driver\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1200, 765));
+        driver.manage().window().minimize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After
-    public void fecharDriver() {
+    public void fecharDriver(Scenario cenario) {
+        Utils.gerarScreenShot(cenario);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.quit();
     }

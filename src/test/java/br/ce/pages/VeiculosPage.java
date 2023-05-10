@@ -5,6 +5,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import static br.ce.steps.Hooks.getDriver;
 
 public class VeiculosPage extends Utils{
@@ -23,16 +28,9 @@ public class VeiculosPage extends Utils{
    @FindBy(how = How.ID, using = "engineperformance")
     private WebElement motor;
 
-   @FindBy(how = How.ID, using = "opendateofmanufacturecalender")
+   @FindBy(how = How.XPATH, using = "//*/input[@id='dateofmanufacture']")
     private WebElement data;
-   @FindBy(how = How.XPATH, using = "//a[@class='ui-state-default']/..//a[contains(text(),'20')]")
-    private WebElement dia;
-   @FindBy(how = How.XPATH, using = "//div[@class='ui-datepicker-title']//span[contains(text(),'February')]")
-    private WebElement mes;
-    @FindBy(how = How.XPATH, using = "//div[@class='ui-datepicker-title']//span[contains(text(),'2023')]")
-    private WebElement ano;
-    @FindBy(how = How.XPATH, using = "//a[@class='ui-datepicker-prev ui-corner-all']")
-    private WebElement voltaData;
+
 
     @FindBy(how = How.ID, using = "numberofseats")
     private WebElement numberAss;
@@ -76,17 +74,19 @@ public class VeiculosPage extends Utils{
      porém misturaria metodos de preenchimento com validação*/
     public void setData(){
         clicar(data);
-        clicar(voltaData);
+        escrever(data,dataDiferencaDias(-5));
     }
-    public void validaMesData(){
-         ValidarText("February",mes);
+    public static String dataDiferencaDias(Integer qtdDias){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH,qtdDias);
+        return getDataFormatada(cal.getTime());
     }
-    public void validaAnoData(){
-        ValidarText("2023",ano);
+
+    public static String getDataFormatada(Date data){
+        DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        return format.format(data);
     }
-    public void setDataDia(){
-        clicar(dia);
-    }
+
     public void setNumberofseat(){
         select(numberofseat,"3");
     }
@@ -127,7 +127,7 @@ public class VeiculosPage extends Utils{
         cilindro("55");
         despenhoMotor("552");
         setData();
-        setDataDia();
+//        setDataDia();
         setNumeroAss();
         setVolante();
         setNumberofseat();

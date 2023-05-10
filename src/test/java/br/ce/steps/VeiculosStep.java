@@ -56,9 +56,6 @@ public class VeiculosStep {
     public void selecionoADataDaFabricação() {
         veiculosPage = new VeiculosPage();
         veiculosPage.setData();
-        veiculosPage.validaMesData();
-        veiculosPage.validaAnoData();
-        veiculosPage.setDataDia();
     }
     @E("seleciono o numero de assentos")
     public void selecionoONumeroDeAssentos() {

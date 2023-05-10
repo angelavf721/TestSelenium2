@@ -5,23 +5,21 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import static br.ce.steps.Hooks.getDriver;
 
 public class ProdutoPage extends Utils {
     public ProdutoPage() {
         PageFactory.initElements(getDriver(), this);
     }
-    @FindBy(how = How.ID, using = "openstartdatecalender")
+    @FindBy(how = How.XPATH, using = "//*/input[@id='startdate']")
     private WebElement calendario;
 
-    @FindBy(how = How.XPATH, using = "//a[@class='ui-datepicker-next ui-corner-all']")
-    private WebElement proxData;
-    @FindBy(how = How.XPATH, using = "//div[@class='ui-datepicker-title']//span[contains(text(),'April')]")
-    private WebElement mes;
-    @FindBy(how = How.XPATH, using = "//div[@class='ui-datepicker-title']//span[contains(text(),'2023')]")
-    private WebElement ano;
-    @FindBy(how = How.XPATH, using = "//a[@class='ui-state-default']/..//a[contains(text(),'20')]")
-    private WebElement dia;
+
 
     @FindBy(how = How.ID, using = "insurancesum")
     private WebElement soma;
@@ -40,17 +38,17 @@ public class ProdutoPage extends Utils {
     private WebElement nextPage;
 
     public void setData(){
-        clicar(calendario);
-        clicar(proxData);
+        escrever(calendario,dataDiferencaSemanas(5));
     }
-    public void validaMesData(){
-        ValidarText("April",mes);
+    public static String dataDiferencaSemanas(Integer qtdSemanas){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_WEEK_IN_MONTH,qtdSemanas);
+        return getDataFormatada(cal.getTime());
     }
-    public void validaAnoData(){
-        ValidarText("2023",ano);
-    }
-    public void setDataDia(){
-        clicar(dia);
+
+    public static String getDataFormatada(Date data){
+        DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        return format.format(data);
     }
 
     public void setSoma(){
@@ -79,7 +77,6 @@ public class ProdutoPage extends Utils {
     /************************************* Metodo dados do Produto ***********************************************/
     public void cadatroProduto(){
         setData();
-        setDataDia();
         setSoma();
         setAvaliacao();
         setSeguro();

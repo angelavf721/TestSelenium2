@@ -19,9 +19,6 @@ public class ProdutoStep {
     public void selecionoDataDeInício() {
         produtoPage = new ProdutoPage();
         produtoPage.setData();
-        produtoPage.validaMesData();
-        produtoPage.validaAnoData();
-        produtoPage.setDataDia();
     }
 
     @E("seleciono a soma do seguro")
